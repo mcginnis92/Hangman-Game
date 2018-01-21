@@ -1,15 +1,27 @@
-h1 {
+/* h1 {
     color: white;
-    /*need to get a harry potter font*/
+    need to get a harry potter font
 }
 
 body {
     background-color: black;
     color: white;
     font-size: 20px;
-     /*need to get a harry potter font*/
+    (need to get a harry potter font)
 }
 
 .box {
     border: 3px white dotted;
+}
+
+p {
+    color: white;
+} */
+
+#lives, #incorrect {
+    color: red;
+}
+
+#correct {
+    color: blue;
 }

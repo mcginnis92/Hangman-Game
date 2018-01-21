@@ -6,7 +6,6 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <script src="assets/javascript/game.js"></script>
 </head>
 
 <body>
@@ -23,15 +22,28 @@
                 <div class="col-md-6 box">
                     <div class="row">
                         <div class="col-md-12 box">
-                            <p>Press any key to get started!</p>
-                            <p>Wins</p>
-                            <p>Current Word:</p>
+                            <h2>Type any key to get started!</h2>
+                            <h3>Current Word</br>
+                            <!--Display blank spaces to indicate number of characters here.-->
+                                <span id="empty"></span>
+                            </h3>
+                            <h3>Correct Guesses</br>
+                            <!--Display correctly guessed letters here.-->
+                                <span id="correct"></span>
+                            </h3>
+                            
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 box">
-                            <p>Number of Guesses Remaining</p>
-                            <p>Letters Already Guessed</p>
+                            <h3>Number of Guesses Remaining</br>
+                            <!--Display lives remaining here.-->
+                                <span id="lives"></span>
+                            </h3>
+                            <h3>Letters Already Guessed</br>
+                            <!--Display incorrect values here.-->
+                                <span id="incorrect"></span>
+                            </h3>
                         </div>   
                     </div>
 
@@ -41,4 +53,6 @@
     </div>    
 
 </body>
+
+<script src="assets/javascript/game.js"></script>
 </html>

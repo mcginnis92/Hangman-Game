@@ -1,33 +1,59 @@
-//set up new array for new word
-var hedwig = ['h', 'e', 'd', 'w', 'i', 'g'];
+//create list of words and pull random word to the page.
+var potentialWords = ['hedwig', 'horcrux', 'patronus', 'snape', 'dumbledore', 'scabbers'];
+var chosenWord = potentialWords[Math.floor(Math.random()* potentialWords.length)]; 
+console.log(chosenWord);
 
-//set up new count of lives for new word
+//split up chosenWord into an array.
+var wordArr = chosenWord.split('');
+console.log(wordArr);
+
+//generate dashes to display number of characters in the chosenWord 
+var displayHTML = '';
+
+for (var i = 0; i < wordArr.length; i++){
+  displayHTML += '_ ';
+}
+console.log(displayHTML);
+
+var displayDashes = document.querySelector('#empty');
+  displayDashes.innerHTML = displayHTML;
+
+// set up new count of lives for new word & display on screen
 var countLives = 10;
+var displayLives = document.querySelector('#lives');
+displayLives.innerHTML = countLives;
 
-//if number of remaining lives > 0, try again
-while (countLives > 0) {
-  
+// //This function is run whenever the user inputs a key as long as adequate lives remain.
+while (countLives > 0){  
+
   //something to listen for user key input or prompt
-  var letter1 = prompt('Input a letter.');
-  console.log(letter1);
+  var letter1 = prompt ('Enter a letter.');
+  debugger;
 
   //compare inputted letters to letters in array
-  if (hedwig.includes(letter1)) {
-  
-  //IF CORRECT: show letter 1 on the screen
-  console.log(letter1);
-  }
-  
-  //IF INCORRECT: remove 1 life
+  if (wordArr.includes(letter1)) {
+      var correct1 = letter1.toUpperCase();
+      var displayCorrect = document.querySelector('#correct');
+      displayCorrect.innerText = correct1;
+    }
+
   else {
-  countLives--;
-  console.log(countLives);
-  }
+      var incorrect1 = letter1.toUpperCase();
+      var displayIncorrect = document.querySelector('#incorrect');
+      displayIncorrect.innerText = incorrect1;
+
+      countLives--; //remove a life
+      var displayLives = document.querySelector('#lives');
+      displayLives.innerText = countLives;
+    }
   
 }
 
-//is word complete?
 
-//if complete, go to next word
 
-//if incomplete, repeat cycle
+
+
+
+// //if complete, go to next word
+
+// if incomplete, repeat cycle
