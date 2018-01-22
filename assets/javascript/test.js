@@ -1,33 +1,61 @@
-var word = "hedwig";
-var wordArr = word.split("");
-var countLives = 10;
-var hasMatch = false;
-var letter1 = prompt('Enter a letter.');
+//create list of words and pull random word to the page.
+var potentialWords = ['hedwig', 'horcrux', 'patronus', 'snape', 'dumbledore', 'scabbers'];
+var chosenWord = potentialWords[Math.floor(Math.random()* potentialWords.length)]; 
+console.log(chosenWord);
 
-document.querySelector('#correct');
-var correctGuesses = document.querySelector('#correct');
+//split up chosenWord into an array.
+var wordArr = chosenWord.split('');
+console.log(wordArr);
 
-document.querySelector('#incorrect');
-var incorrectGuesses = document.querySelector('#incorrect');
+//generate dashes to display number of characters in the chosenWord 
+var displayHTML = '';
 
-for (var i = 0; i < wordArr.length; i++) {
-    correctGuesses += ',' + wordArr[i];
+for (var i = 0; i < wordArr.length; i++){
+  displayHTML += '_ ';
+}
+console.log(displayHTML);
+
+var displayDashes = document.querySelector('#empty');
+  displayDashes.innerHTML = displayHTML;
+
+
+
+//This function is run whenever the user inputs a key as long as adequate lives remain.
+if (countLives > 0){  
+
+//adds event listener for user to press a key
+document.addEventListener("keyup", userGuess);
+
+
+    var userGuess = function (event) {
+    var letter1 = event.key;
+    console.log(letter1);
+
+    var countLives = 10;
+    var displayLives = document.querySelector('#lives');
+    displayLives.innerHTML = countLives;
+
+
+
+
+    }
+
+
+    //compare inputted letters to letters in array
+    
+
 }
 
-//insert the string of interest li tags inside of the #interests element
-var interestElem = document.querySelector('#interests');
-interestElem.innerHTML = interestHTML;
 
-
-
-
-if (wordArr.includes(letter1)) {
-    correctGuesses.innerText = letter1;
-}
-
+//if lives have run out, display full word. start over.
 else {
-    countLives--;
-    incorrectGuesses.innerText = letter1;
+
 }
 
 
+
+
+
+// //if complete, go to next word
+
+// if incomplete, repeat cycle
