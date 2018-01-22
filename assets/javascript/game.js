@@ -20,24 +20,26 @@ console.log(displayHTML);
 var displayDashes = document.querySelector('#empty');
   displayDashes.innerHTML = displayHTML;
 
-
-//user inputs a key
+//function: userGuess (user inputs a key)
     //document.addEventListener("keyup", userGuess);
     //var userGuess = function (event) {
     //console.log(event.key);
+    //verify ();
     //closing bracket for userGuess function do not delete 
    //}
 
+//when userGuess is executed, the verify function is called
 
-if (countLives > 0); //need to change this condition to trigger this function
-
-    var letter1 = prompt ('enter a letter.')
+//current draft of userGuess uses a prompt instead of eventListener
+    if (countLives > 0); 
+    var letter1 = prompt ('Enter a letter.')
     console.log(letter1);
     var countLives = 10;
     var displayLives = document.querySelector('#lives');
     displayLives.innerHTML = countLives;
     var match = false;
-      
+
+var verify = function () {
     if (wordArr.includes(letter1)) {
       var correct1 = letter1.toUpperCase();
       console.log = correct1;
@@ -54,5 +56,6 @@ if (countLives > 0); //need to change this condition to trigger this function
       var displayLives = document.querySelector('#lives');
       displayLives.innerText = countLives;
     }
+}
  
      
