@@ -29,7 +29,7 @@ var displayDashes = document.querySelector('#empty');
    //}
 
 
-if (countLives > 0);
+if (countLives > 0); //need to change this condition to trigger this function
 
     var letter1 = prompt ('enter a letter.')
     console.log(letter1);
