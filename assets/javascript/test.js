@@ -21,35 +21,34 @@ var displayDashes = document.querySelector('#empty');
 var countLives = 10;
 
 //NEW GUESS FUNCTION
-document.addEventListener('keyup', logLetter);
+document.addEventListener('keyup', checkGuess);
 
-function logLetter(event){
+function checkGuess(event){
   var letter1 = event.key;
   console.log(letter1);
-}
 
   //only run if there are lives remaining
   if (countLives > 0) {
     var displayLives = document.querySelector('#lives');
     displayLives.innerHTML = countLives;
   
-  for (var i = 0; i < wordArr.length; i++){
       //MATCH
-      if (letter1 === wordArr[i]){
-        displayBlanks[i]= letter1;
-        for (var i = 0; i < wordArr.length; i++) {
-          wordArr[i].innerText = correct1;
-        }
+      if (wordArr.includes(letter1)){
+          for (var i = 0; i < wordArr.length; i++) {
+          displayBlanks[i] = letter1;
+          }
+      }
 
       //NO MATCH
-      } else {
-      var incorrect1 = letter1.toUpperCase();
-      var displayIncorrect = document.querySelector('#incorrect');
-      displayIncorrect.innerText = incorrect1;
-      countLives--; //deducts life and displays number remaining
-    }
+      else {
+        var incorrect1 = letter1.toUpperCase();
+        var displayIncorrect = document.querySelector('#incorrect');
+        displayIncorrect.innerText += incorrect1;
+        countLives--; //deducts life and displays number remaining
+      }
   }
 }
+
 //   //if match update the wordArr with the correct text
 //   var updateArray = function (correct1) {
 //   wordArr.innerText = correct1;
