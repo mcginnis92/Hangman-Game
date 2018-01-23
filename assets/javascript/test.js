@@ -1,52 +1,52 @@
-//potential words
-var potentialWords = ['hedwig', 'horcrux', 'patronus', 'snape', 'dumbledore', 'scabbers'];
+// list potential words
+var potentialWords = ['hedwig', 'horcrux', 'patronus', 'snape', 'dumbledore'];
 
-//chooses a word from the array
+//choose a word from the array
 var chosenWord = potentialWords[Math.floor(Math.random()* potentialWords.length)]; 
 console.log(chosenWord);
 
-//split up chosenWord into an array
-var wordArr = chosenWord.split('');
-console.log(wordArr);
-
 //generate dashes to display number of characters in the chosenWord 
 var displayBlanks = [];
-  for (var i = 0; i < wordArr.length; i++){
-    displayBlanks.push('_ ');
+  for (var i = 0; i < chosenWord.length; i++){
+    displayBlanks[i] = '_ ';
   }
-var displayDashes = document.querySelector('#empty');
-  displayDashes.innerHTML = displayBlanks;
-
-//RESET GAME
-var countLives = 10;
-
-//NEW GUESS FUNCTION
-document.addEventListener('keyup', checkGuess);
-
-function checkGuess(event){
-  var letter1 = event.key;
-  console.log(letter1);
-
-  //only run if there are lives remaining
-  if (countLives > 0) {
-    var displayLives = document.querySelector('#lives');
-    displayLives.innerHTML = countLives;
+  document.querySelector('#empty').innerText = (displayBlanks.join(' '));
   
-      //MATCH
-      if (wordArr.includes(letter1)){
-          for (var i = 0; i < wordArr.length; i++) {
-          displayBlanks[i] = letter1;
-          }
-      }
+//keep track of how many letters until word is finished
+var unguessedLetters = chosenWord.length;
+console.log(unguessedLetters);
 
-      //NO MATCH
-      else {
-        var incorrect1 = letter1.toUpperCase();
-        var displayIncorrect = document.querySelector('#incorrect');
-        displayIncorrect.innerText += incorrect1;
-        countLives--; //deducts life and displays number remaining
+//users start with 7 lives
+countLives = 10;
+var displayLives = document.querySelector('#lives');
+displayLives.innerText = countLives;
+
+//While there are still unguessed letters and lives remain, get a guess from the user
+while (unguessedLetters > 0 && countLives > 0){
+
+  document.addEventListener('keyup', checkGuess);
+
+    function checkGuess(event){
+    var letter1 = event.key;
+    console.log(letter1);
+
+      //CHECK IF GUESS LETTER IS IN THE WORD
+      for (var l = 0; l < chosenWord.length; l++){
+          if (chosenWord[l] === letter1){
+          displayBlanks[l].innerText= letter1;
+          unguessedLetters--;
+          }
+
+        //NO MATCH
+          else {
+            var incorrect1 = letter1.toUpperCase();
+            document.querySelector('#incorrect').innerText += incorrect1;
+            countLives--;
+          }
+        }
       }
-  }
+  
+//should this } go at the very end of the whole game??   
 }
 
 //   //if match update the wordArr with the correct text
