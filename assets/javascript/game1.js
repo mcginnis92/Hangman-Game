@@ -7,16 +7,22 @@ var wrongAnswers = [];
       
 
 //Start game 
+    // //choose random photo
+    // var photoArray = ['../images/hermharry.jpg', '../images/hogwarts.jpg', '../images/patronus.jpg', '../images/quidditch.jpg', '../images/ron.jpg'];
+    // var randomPhoto = Math.floor(Math.random() * photoArray.length);
+    // document.querySelector('#picture').src = photoArray[randomPhoto];
+
+    //choose random word
     var potentialWords = ['hedwig', 'horcrux', 'patronus', 'snape', 'dumbledore'];
     var chosenWord = potentialWords[Math.floor(Math.random()* potentialWords.length)]; 
     var wordArr = chosenWord.split('');
     console.log(wordArr);
 
-        //generate dashes to display number of characters in the chosenWord 
-        var displayArray = '';
-            for (var i = 0; i < wordArr.length; i++){
-            displayArray += '_ ';
-            }
+    //generate dashes to display number of characters in the chosenWord 
+    var displayArray = '';
+        for (var i = 0; i < wordArr.length; i++){
+        displayArray += '_ ';
+        }
         displayDashes.innerHTML = displayArray;
 
     //set up number of letters that must be guessed for word to be complete
@@ -27,7 +33,7 @@ var wrongAnswers = [];
     countLives = 10;
     displayLives.innerText = countLives;
 
-    
+//This is the function that runs the game
 var guess = function (event){
     var letter1 = event.key;
     console.log("user guess", letter1);

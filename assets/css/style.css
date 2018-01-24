@@ -18,10 +18,23 @@ p {
     color: white;
 } */
 
-#lives, #incorrect {
-    color: red;
+body {
+    background-image: url("../images/hogwartsbg.jpg");
+    background-repeat: default;
+    color: white;
+}
+.header{
+    margin: 0 auto;
 }
 
-#correct {
-    color: blue;
+image {
+    padding: 10px;
+}
+
+#lives, #incorrect {
+    color: #596e90
+}
+
+p {
+    font-size: 18px;
 }
