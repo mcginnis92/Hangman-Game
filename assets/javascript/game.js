@@ -39,44 +39,79 @@ var guess = function (event){
     var letter1 = (event.key).toLowerCase();
     displayArray = "";
 
-    //if guess is correct
-    if (wordArr.includes(letter1)) {
-   
-        for (var i = 0; i< wordArr.length; i++){
-            if ((letter1 === wordArr[i]) && !correctLetters.includes(letter1)){
-                correctLetters.push(letter1);
+    if ((unguessedLetters > 0) && (countLives > 0)){
+
+        //if guess is correct
+        if (wordArr.includes(letter1)) {
+      
+            for (var i = 0; i< wordArr.length; i++){
+                if ((letter1 === wordArr[i]) && !correctLetters.includes(letter1)){
+                    correctLetters.push(letter1);
+                }
+            }
+            console.log("correct letters:", correctLetters);
+            console.log(letter1, "the letter guessed");
+
+            for(var i = 0; i < wordArr.length; i++){
+                if(correctLetters.includes(wordArr[i])){
+                    displayArray += " " + wordArr[i];
+                }else{
+                    displayArray += " _";
+                }
+            }
+
+            unguessedLetters--;
+            console.log("letters remaining", unguessedLetters)
+                if (unguessedLetters === 0) {
+                  displayDashes.innerHTML = displayArray;
+                  alert ('Game over! You win.');
+                  window.location.reload(true);
+                }
+                else {
+
+                }
+            
+            displayDashes.innerHTML = displayArray;
+
+        } 
+          /////if guess is incorrect
+          else {
+            countLives--;           
+            displayLives.innerText = countLives;
+
+            letter1 = letter1.toUpperCase();
+            displayIncorrect.innerText += ' ' + letter1;
+
+            for(var i = 0; i < wordArr.length; i++){
+              if(correctLetters.includes(wordArr[i])){
+                  displayArray += " " + wordArr[i];
+              }else{
+                  displayArray += " _";
+              }
+              console.log("display array is", displayArray);
             }
         }
-        console.log("correct letters:", correctLetters);
-        console.log(letter1, "the letter guessed");
-
-        for(var i = 0; i < wordArr.length; i++){
-            if(correctLetters.includes(wordArr[i])){
-                displayArray += " " + wordArr[i];
-            }else{
-                displayArray += " _";
-            }
-        }
-      /////if guess is incorrect
-      }
-      else {
-        countLives--;           
-        displayLives.innerText = countLives;
-
-        letter1 = letter1.toUpperCase();
-        displayIncorrect.innerText += ' ' + letter1;
-
-        for(var i = 0; i < wordArr.length; i++){
-          if(correctLetters.includes(wordArr[i])){
-              displayArray += " " + wordArr[i];
-          }else{
-              displayArray += " _";
-          }
-        }
-    }
 
     displayDashes.innerHTML = displayArray;
-
   }
+
+  
+  else {
+    alert ('Game over! ' + 'The word was' + chosenWord + ' .' );
+  }
+//closing function bracket do not delete
+}
+
+// var endGame = function (displayArray){
+//     if (displayArray !== ' _'){
+//       alert('you won!');
+//       //refresh game
+//     }
+
+//     else {
+     
+//     }
+// }
+
 
 document.addEventListener('keyup', guess);
