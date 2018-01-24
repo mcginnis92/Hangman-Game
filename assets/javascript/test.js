@@ -10,65 +10,48 @@ var displayBlanks = [];
   for (var i = 0; i < chosenWord.length; i++){
     displayBlanks[i] = '_ ';
   }
-  document.querySelector('#empty').innerText = (displayBlanks.join(' '));
+  correctGuesses.innerText = (displayBlanks.join(' '));
   
 //keep track of how many letters until word is finished
 var unguessedLetters = chosenWord.length;
 console.log(unguessedLetters);
 
-//users start with 7 lives
+//users start with 10 lives
 countLives = 10;
 var displayLives = document.querySelector('#lives');
 displayLives.innerText = countLives;
 
-//While there are still unguessed letters and lives remain, get a guess from the user
-while (unguessedLetters > 0 && countLives > 0){
-
-  document.addEventListener('keyup', checkGuess);
-
-    function checkGuess(event){
+//------ ALL ONE FUNCTION
+    function logGuess (event){
     var letter1 = event.key;
     console.log(letter1);
 
-      //CHECK IF GUESS LETTER IS IN THE WORD
-      for (var l = 0; l < chosenWord.length; l++){
-          if (chosenWord[l] === letter1){
-          displayBlanks[l].innerText= letter1;
-          unguessedLetters--;
-          }
-
-        //NO MATCH
-          else {
-            var incorrect1 = letter1.toUpperCase();
-            document.querySelector('#incorrect').innerText += incorrect1;
-            countLives--;
+        //While there are still unguessed letters and lives remain, check a guess from the user
+        if (unguessedLetters > 0 && countLives > 0){
+            
+          //CHECK IF GUESS LETTER IS IN THE WORD
+          for (var i = 0; i < chosenWord.length; i++){
+                if (letter1 === chosenWord[i]){
+                    displayBlanks[i].innerText= letter1;
+                    unguessedLetters--;
+                    console.log(unguessedLetters);
+                }
+              //NO MATCH
+                else {
+                  var incorrect1 = letter1.toUpperCase();
+                  document.querySelector('#incorrect').innerText = incorrect1;
+                  countLives--;
+                  console.log(unguessedLetters, "unguessed letters");
+                }
           }
         }
-      }
-  
-//should this } go at the very end of the whole game??   
-}
 
-//   //if match update the wordArr with the correct text
-//   var updateArray = function (correct1) {
-//   wordArr.innerText = correct1;
-//   for (var i = 0; i < wordArr.length; i++) {
-//   wordArr[i].innerText = correct1;
-//   }
-// }
-//     if (wordArr.includes(letter1)) {
-//       var correct1 = letter1.toUpperCase();
-//       console.log = correct1;
-     
-//       match = true;
-//       document.querySelector('#correct').innerText += letter1;
-      
-//       //add new code to rebuild the word array here
+        else {
+        }
+    }
+//------ END OF GUESS FUNCTION
+
+
+//add event listener to get a guess from the user to start the game
+document.addEventListener('keyup', logGuess); 
     
-//   }
-//  }
-
-
-    
- 
-     
