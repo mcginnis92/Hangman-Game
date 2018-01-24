@@ -3,7 +3,8 @@
 var displayDashes = document.querySelector('#empty');
 var displayLives = document.querySelector('#lives');
 var displayIncorrect = document.querySelector('#incorrect');
-var wrongAnswers = [];       
+var wrongAnswers = [];   
+var correctLetters = [];    
       
 
 //Start game 
@@ -35,24 +36,51 @@ var wrongAnswers = [];
 
 //This is the function that runs the game
 var guess = function (event){
-    var letter1 = event.key;
-    console.log("user guess", letter1);
+    var letter1 = (event.key).toLowerCase();
+    displayArray = "";
 
-    
-        if (wordArr.includes(letter1)){
-            alert('you have a match!');
-
-            for (var j = 0; j < wordArr.length; j++){
-                displayArray[j] = letter1;
-            }
+    //THIS DOESNT WORK
+    for (var i = 0; i< wordArr.length; i++){
+        if ((letter1 === wordArr[i]) && !correctLetters.includes(letter1)){
+            correctLetters.push(letter1);
         }
-        else {
-            countLives--;           
-            displayLives.innerText = countLives;
+    }
+    console.log("correct letters:", correctLetters);
+    console.log(letter1, "the letter guessed");
 
-            letter1 = letter1.toUpperCase();
-            displayIncorrect.innerText += ' ' + letter1;
+    for(var i = 0; i < wordArr.length; i++){
+        if(correctLetters.includes(wordArr[i])){
+            displayArray += " " + wordArr[i];
+        }else{
+            displayArray += " _"
         }
+    }
+
+    console.log(displayArray)
+
+    displayDashes.innerHTML = displayArray;
+
+
+
+
+
+    //LINES 51-64 DO WORK
+        // if (wordArr.includes(letter1)){
+        //     alert('you have a match!');
+
+        //     for (var j = 0; j < wordArr.length; j++){
+        //         displayArray[j] = letter1;
+        //     }
+        // }
+        // else {
+        //     countLives--;           
+        //     displayLives.innerText = countLives;
+
+        //     letter1 = letter1.toUpperCase();
+        //     displayIncorrect.innerText += ' ' + letter1;
+        // }
 }
+
+
 
 document.addEventListener('keyup', guess);
