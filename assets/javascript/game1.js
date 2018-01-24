@@ -39,7 +39,6 @@ var guess = function (event){
     var letter1 = (event.key).toLowerCase();
     displayArray = "";
 
-    //THIS DOESNT WORK
     for (var i = 0; i< wordArr.length; i++){
         if ((letter1 === wordArr[i]) && !correctLetters.includes(letter1)){
             correctLetters.push(letter1);
@@ -64,21 +63,21 @@ var guess = function (event){
 
 
 
-    //LINES 51-64 DO WORK
-        // if (wordArr.includes(letter1)){
-        //     alert('you have a match!');
+    // LINES 51-64 DO WORK
+    //     if (wordArr.includes(letter1)){
+    //         alert('you have a match!');
 
-        //     for (var j = 0; j < wordArr.length; j++){
-        //         displayArray[j] = letter1;
-        //     }
-        // }
-        // else {
-        //     countLives--;           
-        //     displayLives.innerText = countLives;
+    //         for (var j = 0; j < wordArr.length; j++){
+    //             displayArray[j] = letter1;
+    //         }
+    //     }
+    //     else {
+    //         countLives--;           
+    //         displayLives.innerText = countLives;
 
-        //     letter1 = letter1.toUpperCase();
-        //     displayIncorrect.innerText += ' ' + letter1;
-        // }
+    //         letter1 = letter1.toUpperCase();
+    //         displayIncorrect.innerText += ' ' + letter1;
+    //     }
 }
 
 
