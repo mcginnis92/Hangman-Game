@@ -9,29 +9,31 @@
 </head>
 
 <body>
-    <div class = "container-fluid">
-       <h1>Harry Potter Hangman</h1> 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 header">
+                <img src="assets/images/header.png" alt="harry potter header">
+            </div>
+        </div>
     </div>
 
     <div class="container">
             <div class="row">
                 <div class="col-md-6 box">
-                    insert photo on this side
+                    <img src="assets/images/hermharry.jpg" width="400" height="312" id="picture" alt="rotating Harry Potter image">
+                    <p>Guess a word that appears in Harry Potter books!</p>
+                    <p>You only have 10 chances, so use your magic to guess the correct word!</p>
                 </div>
 
-                <div class="col-md-6 box">
+                <div class="col-md-6 box text">
                     <div class="row">
                         <div class="col-md-12 box">
-                            <h2>Type any key to get started!</h2>
+                            <h2>Harry Potter Hangman</h2>
+                            <h3>Type a letter key to begin guessing!</h3>
                             <h3>Current Word</br>
                             <!--Display blank spaces to indicate number of characters here.-->
                                 <span id="empty"></span>
-                            </h3>
-                            <h3>Correct Guesses</br>
-                            <!--Display correctly guessed letters here.-->
-                                <span id="correct"></span>
-                            </h3>
-                            
+                            </h3>       
                         </div>
                     </div>
                     <div class="row">
@@ -51,7 +53,19 @@
             </div>
     
     </div>    
+    
 
+    <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 footer">
+                    <audio controls autoplay>
+                        <source src="theme.mp3" type="audio/mp3">
+                        <p>If you can read this, your browser does not support the audio element.</p>
+                    </audio>
+                </div>
+            </div>
+        </div>
+    
 </body>
 
 <script src="assets/javascript/game.js"></script>
