@@ -38,3 +38,7 @@ image {
 p {
     font-size: 18px;
 }
+
+.text {
+    text-align: right;
+}

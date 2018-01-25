@@ -37,6 +37,7 @@ var correctLetters = [];
 //This is the function that runs the game
 var guess = function (event){
     var letter1 = (event.key).toLowerCase();
+    console.log(letter1, "the letter guessed");
     displayArray = "";
 
     if ((unguessedLetters > 0) && (countLives > 0)){
@@ -47,10 +48,10 @@ var guess = function (event){
             for (var i = 0; i< wordArr.length; i++){
                 if ((letter1 === wordArr[i]) && !correctLetters.includes(letter1)){
                     correctLetters.push(letter1);
+                    unguessedLetters--;
+                    console.log(unguessedLetters, "letters remain");
                 }
             }
-            console.log("correct letters:", correctLetters);
-            console.log(letter1, "the letter guessed");
 
             for(var i = 0; i < wordArr.length; i++){
                 if(correctLetters.includes(wordArr[i])){
@@ -60,22 +61,19 @@ var guess = function (event){
                 }
             }
 
-            unguessedLetters--;
-            console.log("letters remaining", unguessedLetters)
-                if (unguessedLetters === 0) {
-                  displayDashes.innerHTML = displayArray;
-                  alert ('Game over! You win.');
-                  window.location.reload(true);
-                }
-                else {
-
-                }
+            if (unguessedLetters === 0) { 
+                displayDashes.innerHTML = displayArray;
+                alert ('Game over! You win.');
+                window.location.reload(true);
+            }
+            else {
+            }
             
             displayDashes.innerHTML = displayArray;
 
         } 
           /////if guess is incorrect
-          else {
+        else {
             countLives--;           
             displayLives.innerText = countLives;
 
@@ -88,30 +86,22 @@ var guess = function (event){
               }else{
                   displayArray += " _";
               }
-              console.log("display array is", displayArray);
+            }
+            if (countLives === 0) {
+                alert ('Game over! ' + 'The word was ' + chosenWord + '.' );
+                window.location.reload(true);
             }
         }
 
     displayDashes.innerHTML = displayArray;
-  }
 
-  
-  else {
-    alert ('Game over! ' + 'The word was' + chosenWord + ' .' );
-  }
+    }
+
+    // else if (countLives === 0) {
+    //     alert ('Game over! ' + 'The word was ' + chosenWord + '.' );
+    //     window.location.reload(true);
+    // }
 //closing function bracket do not delete
 }
-
-// var endGame = function (displayArray){
-//     if (displayArray !== ' _'){
-//       alert('you won!');
-//       //refresh game
-//     }
-
-//     else {
-     
-//     }
-// }
-
 
 document.addEventListener('keyup', guess);
