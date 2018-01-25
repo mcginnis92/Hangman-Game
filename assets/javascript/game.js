@@ -8,13 +8,9 @@ var correctLetters = [];
       
 
 //Start game 
-    // //choose random photo
-    // var photoArray = ['../images/hermharry.jpg', '../images/hogwarts.jpg', '../images/patronus.jpg', '../images/quidditch.jpg', '../images/ron.jpg'];
-    // var randomPhoto = Math.floor(Math.random() * photoArray.length);
-    // document.querySelector('#picture').src = photoArray[randomPhoto];
 
     //choose random word
-    var potentialWords = ['hedwig', 'horcrux', 'patronus', 'snape', 'dumbledore'];
+    var potentialWords = ['hedwig', 'horcrux', 'patronus', 'snape', 'dumbledore', 'hermione', 'potions', 'quidditch', 'slytherin', 'lupin', 'gringotts'];
     var chosenWord = potentialWords[Math.floor(Math.random()* potentialWords.length)]; 
     var wordArr = chosenWord.split('');
     console.log(wordArr);
@@ -42,7 +38,7 @@ var guess = function (event){
 
     if ((unguessedLetters > 0) && (countLives > 0)){
 
-        //if guess is correct
+        /////if guess is correct
         if (wordArr.includes(letter1)) {
       
             for (var i = 0; i< wordArr.length; i++){
@@ -63,7 +59,7 @@ var guess = function (event){
 
             if (unguessedLetters === 0) { 
                 displayDashes.innerHTML = displayArray;
-                alert ('Game over! You win.');
+                alert ('Congratulations! You win.');
                 window.location.reload(true);
             }
             else {
@@ -72,7 +68,7 @@ var guess = function (event){
             displayDashes.innerHTML = displayArray;
 
         } 
-          /////if guess is incorrect
+        /////if guess is incorrect
         else {
             countLives--;           
             displayLives.innerText = countLives;
@@ -88,7 +84,7 @@ var guess = function (event){
               }
             }
             if (countLives === 0) {
-                alert ('Game over! ' + 'The word was ' + chosenWord + '.' );
+                alert ('AVADA KEDAVRA! ' + 'The word was ' + chosenWord + '.' );
                 window.location.reload(true);
             }
         }
@@ -96,12 +92,6 @@ var guess = function (event){
     displayDashes.innerHTML = displayArray;
 
     }
-
-    // else if (countLives === 0) {
-    //     alert ('Game over! ' + 'The word was ' + chosenWord + '.' );
-    //     window.location.reload(true);
-    // }
-//closing function bracket do not delete
 }
 
 document.addEventListener('keyup', guess);

@@ -42,3 +42,11 @@ p {
 .text {
     text-align: right;
 }
+
+.footer {
+    margin-top: 200px;
+}
+
+audio {
+    opacity: 0.75;
+}
