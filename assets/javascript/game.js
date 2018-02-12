@@ -6,14 +6,12 @@ var displayIncorrect = document.querySelector('#incorrect');
 var wrongAnswers = [];   
 var correctLetters = [];    
       
-
 //Start game 
 
     //choose random word
     var potentialWords = ['hedwig', 'horcrux', 'patronus', 'snape', 'dumbledore', 'hermione', 'potions', 'quidditch', 'slytherin', 'lupin', 'gringotts'];
     var chosenWord = potentialWords[Math.floor(Math.random()* potentialWords.length)]; 
     var wordArr = chosenWord.split('');
-    console.log(wordArr);
 
     //generate dashes to display number of characters in the chosenWord 
     var displayArray = '';
@@ -68,7 +66,7 @@ var guess = function (event){
             displayDashes.innerHTML = displayArray;
 
         } 
-        /////if guess is incorrect
+        //if guess is incorrect
         else {
             countLives--;           
             displayLives.innerText = countLives;
